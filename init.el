@@ -157,6 +157,32 @@
 
 (add-hook 'org-mode-hook #'org-latex-preview)
 
+;; Org clock, tasks, log.
+
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELLED")))
+
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
+(setq org-log-into-drawer t)
+(setq org-clock-into-drawer t) 
+(setq org-log-state-notes-insert-after-drawers t)
+(setq org-log-repeat 'note)  ;; For repeated tasks, if you use those
+;; Log a timestamp when you mark a task DONE
+(setq org-log-done 'time)
+
+;; Log timestamps on every TODO state change, not just DONE
+(setq org-log-todo 'time)
+
+
+(setq org-todo-state-tags-triggers
+      (quote (("DONE" ("DONE" . t))
+              ("CANCELLED" ("CANCELLED" . t))
+              ("TODO" ("TODO" . t))
+              ("IN-PROGRESS" ("IN-PROGRESS" . t))
+              ("WAITING" ("WAITING" . t)))))
+
 
 (setq org-structure-template-alist
       '(("py" . "src python")
@@ -313,7 +339,7 @@
     "w r" '(split-window-right :which-key "Window: split right.")
     "w b" '(split-window-below :which-key "Window: split below.")
     "w x" '(delete-window :which-key "Window: kill current.")
-    "w k" '(delete-other-windows :which-key "Window: kill others.")
+    "w X" '(delete-other-windows :which-key "Window: kill others.")
     "w o" '(other-window :which-key "Window: other.")
 
     "w h" '(windmove-left :which-key "Window left")
@@ -337,4 +363,27 @@
  )
 
 (when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))  ;; Shift + arrows
+  (windmove-default-keybindings 'control))  ;; ctrl + arrows
+
+
+(setq org-todo-state-tags-triggers nil)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files '("~/org/test.org" "/Users/batu/org/tasks.org"))
+ '(package-selected-packages
+   '(alert all-the-icons company consult doom-themes evil-collection
+	   exec-path-from-shell flycheck general jupyter lsp-ui magit
+	   marginalia ob-go ob-ipython ob-rust org-modern org-roam
+	   pdf-tools powerline projectile treemacs
+	   treemacs-icons-dired treemacs-magit treemacs-projectile
+	   vertico vterm)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
