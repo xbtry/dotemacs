@@ -367,23 +367,3 @@
 
 
 (setq org-todo-state-tags-triggers nil)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files '("~/org/test.org" "/Users/batu/org/tasks.org"))
- '(package-selected-packages
-   '(alert all-the-icons company consult doom-themes evil-collection
-	   exec-path-from-shell flycheck general jupyter lsp-ui magit
-	   marginalia ob-go ob-ipython ob-rust org-modern org-roam
-	   pdf-tools powerline projectile treemacs
-	   treemacs-icons-dired treemacs-magit treemacs-projectile
-	   vertico vterm)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
